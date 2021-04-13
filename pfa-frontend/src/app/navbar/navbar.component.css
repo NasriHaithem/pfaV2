@@ -54,9 +54,12 @@ body{
 
 .nav-items .icon {
    display: none;
+   color: black;
 }
 
- 
+.active-nav-item{
+  background-color: #3c3c3b;
+}
  
 @media screen and (max-width: 816px) {
   .nav-items a {display: none;}

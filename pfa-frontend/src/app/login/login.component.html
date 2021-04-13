@@ -2,12 +2,13 @@
 <div class="container" id="container">
 
 	<div class="form-container sign-in-container">
-		<form action="#">
+		<form (submit)="onLoginSubmit()">
 			<h1 style="margin-bottom: 50px;">Sign in</h1>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
+			<flash-messages></flash-messages>
+			<input type="username" placeholder="Username" [(ngModel)]="username" name="username"/>
+			<input type="password" placeholder="Password" [(ngModel)]="password" name="password"/>
 			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
+			<button type="submit">Sign In</button>
 		</form>
 	</div>
 	<div class="overlay-container">

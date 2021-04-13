@@ -11,6 +11,8 @@ router.post('/register', (req, res, next) => {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
+    phoneNumber: req.body.phoneNumber,
+    address: req.body.address,
     username: req.body.username,
     password: req.body.password
   });
@@ -49,7 +51,9 @@ router.post('/authenticate', (req, res, next) => {
             firstname: user.firstname,
             lastname: user.lastname,
             username: user.username,
-            email: user.email
+            email: user.email,
+            phoneNumber: user.phoneNumber,
+            address: user.address,
           }
         })
       } else {

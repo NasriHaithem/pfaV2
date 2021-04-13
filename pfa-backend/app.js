@@ -1,12 +1,15 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
 const passport = require('passport');
+
 const config = require('./config/database')
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+
 const mongoose = require('mongoose')
 //connecting to mongo database:
 mongoose.connect(config.database, { useMongoClient: true});
@@ -19,7 +22,10 @@ mongoose.connection.on('error', (err) => {
   console.log('Database error '+err);
 });
 */
-var app = express();
+const app = express();
+
+// CORS Middleware
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -1,14 +1,12 @@
 <div id="nav-logo"> 
   <a routerLink="home"><img src="../../assets/logo DARI-blanc-03.svg  " alt="dariLogo"></a>
 </div>
-<div class="nav-items" id="nav-items-id">
-  <a routerLink="home">Home</a>
-  <a routerLink="about">About</a>
-  <a routerLink="register">register</a>
-  <a routerLink="login">Login</a>
-
-  <a  style="font-size:18px;"
-      class="icon" 
-      (click)="showNavItems()"
-      style="color: black;">  &#9776; </a>
+<div  class="nav-items" id="nav-items-id">
+  <a routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="home">Home</a>
+  <a routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="about">About</a>
+  <a routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="register">register</a>
+  <a routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="login">Login</a>
+  <a href="#" (click)="onLogout()">Logout</a>
+  
+  <a  style="font-size:18px;" class="icon" (click)="showNavItems()">  &#9776; </a>
 </div>
