@@ -4,7 +4,6 @@
 	<div class="form-container sign-in-container">
 		<form (submit)="onLoginSubmit()">
 			<h1 style="margin-bottom: 50px;">Sign in</h1>
-			<flash-messages></flash-messages>
 			<input type="username" placeholder="Username" [(ngModel)]="username" name="username"/>
 			<input type="password" placeholder="Password" [(ngModel)]="password" name="password"/>
 			<a href="#">Forgot your password?</a>
@@ -17,7 +16,7 @@
 			<div class="overlay-panel overlay-right">
 				<h1>Hello, Friend!</h1>
 				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
+				<button class="ghost" id="signUp" routerLink="../register">Sign Up</button>
 			</div>
 		</div>
 	</div>

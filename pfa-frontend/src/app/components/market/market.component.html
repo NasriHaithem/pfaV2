@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>The Market</h1>
+
+    <div class="row">
+        <div *ngFor='let announcement of announcements'>
+            <div class="col-4 mb-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{announcement.imageUrl}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{announcement.imageUrl}}</h5>
+                      <p class="card-text"> {{announcement.availability}} </p>
+                      <p class="card-text"> {{announcement.address}} </p>
+                      <p class="card-text"> {{announcement.uploaded}} </p>
+                      <p class="card-text"></p>
+
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        
+    </div>
+    
+
+</div>

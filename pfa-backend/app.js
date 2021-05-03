@@ -7,8 +7,13 @@ const cors = require('cors');
 const passport = require('passport');
 
 const config = require('./config/database')
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const announcementRouter = require('./routes/announcement');
+const visitRouter = require('./routes/visit');
+const dealRouter = require('./routes/deal');
+
 
 const mongoose = require('mongoose')
 //connecting to mongo database:
@@ -47,6 +52,10 @@ require('./config/passport')(passport);
 //ou on traite les endpoints:
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/announcements',announcementRouter);
+app.use('/visits',visitRouter);
+app.use('/deals',dealRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
