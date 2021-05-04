@@ -14,7 +14,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MarketComponent } from './components/market/market.component';
 
-import {AuthGuard} from './guards/auth.guard'
+import {AuthGuard} from './guards/auth.guard';
+import { ItemDetailsComponent } from './components/item-details/item-details.component'
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {AuthGuard} from './guards/auth.guard'
     RegisterComponent,
     ProfileComponent,
     MarketComponent,
+    ItemDetailsComponent,
 
   ],
   imports: [

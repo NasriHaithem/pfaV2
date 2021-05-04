@@ -45,7 +45,7 @@ router.post('/', upload.single('image'), function(req, res, next) {
     if(!req.file) {
         return res.status(500).send({ message: 'Upload fail'});
     } else {
-        req.body.imageUrl = 'http://localhost:3000//' + req.file.filename;
+        req.body.imageUrl = 'http://localhost:3000/images/' + req.file.filename;
         Announcement.create(req.body, function (err, announcement) {
             if (err) {
                 console.log(err);

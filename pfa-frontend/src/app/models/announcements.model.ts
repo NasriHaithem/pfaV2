@@ -1,5 +1,5 @@
 export interface Announcements {
-    announcementId:  string,
+    _id:  string,
     ownerId: string,
     type:  string,
     availability:  boolean,

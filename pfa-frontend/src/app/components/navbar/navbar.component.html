@@ -1,18 +1,16 @@
-
-
-  <div id="nav-logo"> 
+<div id="nav-logo"> 
     <a routerLink="home"><img src="../../assets/logo DARI-blanc-03.svg  " alt="dariLogo"></a>
-  </div>
-  <div  class="nav-items" id="nav-items-id">
+</div>
+<div  class="nav-items" id="nav-items-id">
     <a  routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="home">Home</a>
     <a  routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="about">About</a>
-    <a *ngIf="!loggedIn()" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="market">Market</a>
+    <a  routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="market">Market</a>
 
     <a *ngIf="!loggedIn()" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="register">register</a>
     <a *ngIf="!loggedIn()" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="login">Login</a>
 
-    <a *ngIf="loggedIn()" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="profile">Profile</a>
+    <a *ngIf="!loggedIn()" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="profile">Profile</a>
     <a *ngIf="loggedIn()" href="#" (click)="onLogout()">Logout</a>
     
     <a  style="font-size:18px;" class="icon" (click)="showNavItems()">  &#9776; </a>
-  </div>
+</div>

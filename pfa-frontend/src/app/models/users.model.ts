@@ -5,5 +5,6 @@ export interface User {
     phoneNumber: string,
     address: string,
     username:  string,
-    password:  string
+    password:  string,
+    cin: string
 }
