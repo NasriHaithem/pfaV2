@@ -52,7 +52,9 @@ const AnnouncementSchema = mongoose.Schema ({
         //stdio apartment
     },
     
-
+    /*TODO: nzidou attibuts hethom
+                    surface, description, momkin nzidou barcha tsawir
+    */
 });
 
 const Announcement = mongoose.model('Announcement', AnnouncementSchema);

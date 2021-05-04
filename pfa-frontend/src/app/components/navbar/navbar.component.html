@@ -9,7 +9,7 @@
     <a *ngIf="!loggedIn()" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="register">register</a>
     <a *ngIf="!loggedIn()" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="login">Login</a>
 
-    <a *ngIf="!loggedIn()" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="profile">Profile</a>
+    <a *ngIf="loggedIn()" routerLinkActive="active-nav-item" [routerLinkActiveOptions]="{exact: true}" routerLink="profile">Profile</a>
     <a *ngIf="loggedIn()" href="#" (click)="onLogout()">Logout</a>
     
     <a  style="font-size:18px;" class="icon" (click)="showNavItems()">  &#9776; </a>

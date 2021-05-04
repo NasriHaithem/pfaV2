@@ -15,7 +15,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MarketComponent } from './components/market/market.component';
 
 import {AuthGuard} from './guards/auth.guard';
-import { ItemDetailsComponent } from './components/item-details/item-details.component'
+import { ItemDetailsComponent } from './components/item-details/item-details.component';
+import { DealsComponent } from './components/profile/deals/deals.component'
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ItemDetailsComponent } from './components/item-details/item-details.com
     ProfileComponent,
     MarketComponent,
     ItemDetailsComponent,
+    DealsComponent,
 
   ],
   imports: [

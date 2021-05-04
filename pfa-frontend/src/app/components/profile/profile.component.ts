@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private authService: AuthService
+              ) { }
 
   ngOnInit(): void {
   }
@@ -16,7 +20,15 @@ export class ProfileComponent implements OnInit {
     let toggle = document.querySelector('.toggle');
     navigation?.classList.toggle('active');
     toggle?.classList.toggle('active');
+  }
 
-}
-
+  deals(){
+    this.router.navigate(['deals'], {relativeTo:this.route});
+  }
+  
+  onLogout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+    return false;
+  }
 }
