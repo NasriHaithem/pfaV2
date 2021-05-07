@@ -9,6 +9,13 @@ router.get('/:id', function(req, res, next) {
         res.json(Deal);
     });
 });
+//get deals by sellerId ( the owner id)
+router.get('/owner/:id', function(req, res, next) {
+    Deal.find({sellerId: req.params.id}, function (err, Deal) {
+        if (err) return next(err);
+        res.json(Deal);
+    });
+});
 // get all Deals
 router.get('/', function(req, res, next) {
     Deal.find({}, function (err, Deal) {

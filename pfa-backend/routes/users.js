@@ -64,10 +64,55 @@ router.post('/authenticate', (req, res, next) => {
   });
 });
 
-// Profile
 
-router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-  res.json({user: req.user});
+
+//CRUD
+// get User by id
+router.get('/:id', function(req, res, next) {
+  User.findById(req.params.id, function (err, User) {
+      if (err) return next(err);
+      res.json(User);
+  });
+});
+// get all Visits
+router.get('/', function(req, res, next) {
+  User.find({}, function (err, User) {
+      if (err) return next(err);
+      res.json(User);
+  });
+});  
+// post User
+router.post('/', function(req, res, next) {
+  
+
+      User.create(req.body, function (err, User) {
+          if (err) {
+              console.log(err);
+              return next(err);
+          }
+          res.json(User);
+      });
+  
 });
 
+//update User
+router.put('/:id', function(req, res, next) {
+  User.findByIdAndUpdate(req.params.id, {$set: req.body},function (err, User) {
+      if (err) return res.status(500).send({ message: 'update fail'});
+      res.json({
+          msg: "successfully updated"
+      });
+  });
+});
+
+//delete User
+router.delete('/:id', function(req, res, next) {
+  User.findByIdAndDelete(req.params.id, function (err, User) {
+      if (err) return res.status(500).send({ message: 'delete fail'});
+      res.json({
+          User : User,
+          msg: "successfully deleted"
+      });
+  });
+});
 module.exports = router;

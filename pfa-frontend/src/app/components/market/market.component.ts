@@ -16,7 +16,7 @@ export class MarketComponent implements OnInit {
       .subscribe( data => this.announcements = data);
   }
 
-  viewItem(announcement: any){
+  viewItem(announcement: Announcements){
 
     this.route.navigate(['/market', announcement._id])
 
