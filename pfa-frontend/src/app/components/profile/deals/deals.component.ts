@@ -1,43 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Deals } from 'src/app/models/deals.model';
-import { User } from 'src/app/models/users.model';
 import { DealsService } from 'src/app/services/deals/deals.service';
-
+import { MatTableDataSource} from '@angular/material/table';
+import { MatSort} from '@angular/material/sort'
+import {MatPaginator} from '@angular/material/paginator';
 @Component({
   selector: 'app-deals',
   templateUrl: './deals.component.html',
   styleUrls: ['./deals.component.css']
 })
 export class DealsComponent implements OnInit {
-  deals: Deals[] = [];
-  buyers: User[] = [];
-  
-  constructor(private dealsService: DealsService) { }
+  displayedColumns: string[] = ['buyerId', 'beginDate', 'endDate', 'dealPrice'];
+  dataSource!: MatTableDataSource<Deals>
+
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(private dealsService: DealsService) { 
+    this.dataSource = new MatTableDataSource()
+  }
 
   ngOnInit(): void {
     let owner = localStorage.getItem('user');
     let ownerId = JSON.parse(owner || '{}').id;
 
     this.dealsService.getUserDeals(ownerId)
-      .subscribe( data => this.deals = data);
-
-
-    setTimeout(() => {
-      console.log("after 5sec:")
-      this.fillingBuyersArray()
-    }, 5000);
-    
+      .subscribe( data => {
+        this.dataSource.data = data as Deals[]
+      });
+  }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
-  fillingBuyersArray(){
-    this.deals.forEach(deal => {
-      this.dealsService.getBuyerInfo(deal.buyerId)
-      .subscribe( data => this.buyers.push(data))
-    });
-
-    
-    console.log(this.buyers)
+  public applyFilter = (event: Event) => {
+    const target = event.target as HTMLInputElement;
+    this.dataSource.filter = target.value.trim().toLocaleLowerCase();
   }
-
 
 }

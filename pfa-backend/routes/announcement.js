@@ -41,11 +41,17 @@ router.get('/', function(req, res, next) {
     });
 });  
 // post announcement
-router.post('/', upload.single('image'), function(req, res, next) {
-    if(!req.file) {
+router.post('/', upload.array('images'), upload.single('image'), function(req, res, next) {
+    if(!req.files || !req.file) {
         return res.status(500).send({ message: 'Upload fail'});
     } else {
         req.body.imageUrl = 'http://localhost:3000/images/' + req.file.filename;
+
+        const files = req.files;
+        req.body.secondaryImagesUrl = []
+        files.forEach(file => {
+            req.body.secondaryImagesUrl.push('http://localhost:3000/images/' + file.filename)
+        });
         Announcement.create(req.body, function (err, announcement) {
             if (err) {
                 console.log(err);

@@ -13,13 +13,13 @@ const routes: Routes = [
   { path:'home', component:HomeComponent},
   { path:'register', component:RegisterComponent},
   { path:'profile', component:ProfileComponent, 
+    canActivate: [AuthGuard],
     children:[
       { path:'deals', component: DealsComponent},
     ]
-    //canActivate: [AuthGuard]
-    },
+  },
   { path:'market', component:MarketComponent},
-  { path:'market/:id', component:ItemDetailsComponent},
+  { path:'market/:id', component:ItemDetailsComponent, canActivate: [AuthGuard],},//el login traj3ou lil item detail page
 ];
 
 @NgModule({

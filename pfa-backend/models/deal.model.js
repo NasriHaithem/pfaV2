@@ -15,7 +15,8 @@ const DealSchema = mongoose.Schema ({
     announcementId: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Announcements',
-        required: true
+        required: true,
+        unique: true
     },
     beginDate: {
         type: Date,
