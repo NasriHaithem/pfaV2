@@ -41,15 +41,16 @@ router.get('/', function(req, res, next) {
     });
 });  
 // post announcement
-router.post('/', upload.array('images'), upload.single('image'), function(req, res, next) {
-    if(!req.files || !req.file) {
+var cpUpload = upload.fields([{ name: 'image', maxCount: 1 }, { name: 'images', maxCount: 8 }])
+router.post('/', cpUpload, function(req, res, next) {
+    if(!req.files) {
         return res.status(500).send({ message: 'Upload fail'});
     } else {
-        req.body.imageUrl = 'http://localhost:3000/images/' + req.file.filename;
-
         const files = req.files;
+        req.body.imageUrl = 'http://localhost:3000/images/' + files['image'][0].filename;
+
         req.body.secondaryImagesUrl = []
-        files.forEach(file => {
+        files['images'].forEach(file => {
             req.body.secondaryImagesUrl.push('http://localhost:3000/images/' + file.filename)
         });
         Announcement.create(req.body, function (err, announcement) {
