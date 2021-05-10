@@ -20,7 +20,11 @@ const UserSchema = mongoose.Schema ({
     type: String,
     required: true
   },
-  address: {
+  city: {
+    type: String,
+    required: true
+  },
+  state: {
     type: String,
     required: true
   },
@@ -32,10 +36,7 @@ const UserSchema = mongoose.Schema ({
     type: String,
     required: true
   },
-  cin: {
-    type: String,
-    required: true
-  },
+
   
 });
 

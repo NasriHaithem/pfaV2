@@ -22,8 +22,8 @@ const DealSchema = mongoose.Schema ({
         type: Date,
         required: true
     },
-    endDate: {
-        type: Date,
+    duration: {
+        type: Number,
         required: true
     },
     dealPrice: {

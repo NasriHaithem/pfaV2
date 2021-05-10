@@ -16,10 +16,14 @@ const AnnouncementSchema = mongoose.Schema ({
         //required: true
         //surface
     },
-    type: {
+    type_ann: {
         type: String,
         //required: true
-        //house or appartment or studio
+        //sales or rents
+    },
+    type_lodgment:{
+        type: String,
+        //required: true
     },
     availability: {
         type: Boolean,
