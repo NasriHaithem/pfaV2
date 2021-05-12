@@ -1,111 +1,112 @@
-<form>
+<form (submit)="onRegisterSubmit()">
     <mat-card>
         <mat-card-title>Sign Up</mat-card-title>
 
                         <mat-divider></mat-divider>
 
         <mat-card-content>      
-                   <!-- FIRST AND LAST NAMES-->
-                   <div class="row">
-                        <p class="column">
-
-                            <mat-form-field>
-                                <mat-label>Your First Name</mat-label>
-                                <input type="text" matInput placeholder="first name">
-                                <mat-icon matSuffix>edit</mat-icon>
-                                <mat-hint>Hint</mat-hint>
-                            </mat-form-field>
-    
-                        
-                                <mat-form-field>
-                                    <mat-label>Your Last Name</mat-label>
-                                    <input type="text" matInput placeholder="last name">
-                                    <mat-icon matSuffix>edit</mat-icon>
-                                    <mat-hint>Hint</mat-hint>
-                                </mat-form-field>
-
-                        </p>
-                   </div>
                    
-                   <!-- EMAIL AND PHONE NUMBER-->
                    <div class="row">
                     <p class="column">
 
                         <mat-form-field>
-                            <mat-label>Your Email</mat-label>
-                            <input type="email" matInput placeholder="email">
-                            <mat-icon matSuffix>email</mat-icon>
+                            <mat-label>Your First Name</mat-label>
+                            <input type="text" matInput id="firstname"  [(ngModel)]="user.firstname" name="firstname" placeholder="first name">
+                            <mat-icon matSuffix>edit</mat-icon>
                             <mat-hint>Hint</mat-hint>
                         </mat-form-field>
 
-            
-
+                    
                             <mat-form-field>
-                                <mat-label>Your Phone Number</mat-label>
-                                <input type="text" matInput placeholder="Phone number">
-                                <mat-icon matSuffix>phone</mat-icon>
+                                <mat-label>Your Last Name</mat-label>
+                                <input type="text" matInput id="lastname"  [(ngModel)]="user.lastname" name="lastname" placeholder="last name">
+                                <mat-icon matSuffix>edit</mat-icon>
                                 <mat-hint>Hint</mat-hint>
                             </mat-form-field>
 
-               </p>
-                   </div>
-                   
-                   <!-- CITY AND STATE -->
-                   <div class="row">
-                        <p class="column">
+                    </p>
+               </div>
+               
+               
+               <div class="row">
+                <p class="column">
 
-                            <mat-form-field>
-                                <mat-label>Your City</mat-label>
-                                <input type="text" matInput placeholder="City ">
-                                <mat-icon matSuffix>location_city</mat-icon>
-                                <mat-hint>Hint</mat-hint>
-                            </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Your Email</mat-label>
+                        <input type="email" matInput id="email"  [(ngModel)]="user.email" name="email" placeholder="email">
+                        <mat-icon matSuffix>email</mat-icon>
+                        <mat-hint>Hint</mat-hint>
+                    </mat-form-field>
+
+        
+
+                        <mat-form-field>
+                            <mat-label>Your Phone Number</mat-label>
+                            <input type="text" matInput id="phoneNumber"  [(ngModel)]="user.phoneNumber" name="phoneNumber" placeholder="Phone number">
+                            <mat-icon matSuffix>phone</mat-icon>
+                            <mat-hint>Hint</mat-hint>
+                        </mat-form-field>
+
+           </p>
+               </div>
+               
+              
+               <div class="row">
+                    <p class="column">
+
+                        <mat-form-field>
+                            <mat-label>Your City</mat-label>
+                            <input type="text" matInput id="city"  [(ngModel)]="user.city" name="city" placeholder="City ">
+                            <mat-icon matSuffix>location_city</mat-icon>
+                            <mat-hint>Hint</mat-hint>
+                        </mat-form-field>
 
 
-                            <mat-form-field>
-                                <mat-label>Your State</mat-label>
-                                <input type="text" matInput placeholder="State ">
-                                <mat-icon matSuffix>place</mat-icon>
-                                <mat-hint>Hint</mat-hint>
-                            </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Your State</mat-label>
+                            <input type="text" matInput id="state"  [(ngModel)]="user.state" name="state" placeholder="State ">
+                            <mat-icon matSuffix>place</mat-icon>
+                            <mat-hint>Hint</mat-hint>
+                        </mat-form-field>
 
-                        </p>
+                    </p>
 
-                   </div>
-                  
-                   <!-- USERNAME AND PASSWORD -->
-                   <div class="row">
-                        <p class="column">
+               </div>
+              
+               
+               <div class="row">
+                    <p class="column">
 
-                            <mat-form-field>
-                                <mat-label>Type a Username</mat-label>
-                                <input type="text" matInput placeholder="username">
-                                <mat-icon matSuffix>person</mat-icon>
-                                <mat-hint>Hint</mat-hint>
-                            </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Type a Username</mat-label>
+                            <input type="text" matInput id="username"  [(ngModel)]="user.username" name="username" placeholder="username">
+                            <mat-icon matSuffix>person</mat-icon>
+                            <mat-hint>Hint</mat-hint>
+                        </mat-form-field>
 
-            
+        
 
-                            <mat-form-field>
-                                <mat-label>Type a Password</mat-label>
-                                <input type="password" matInput placeholder="password">
-                                <mat-icon matSuffix>password</mat-icon>
-                                <mat-hint>Hint</mat-hint>
-                            </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Type a Password</mat-label>
+                            <input type="password" matInput id="password"  [(ngModel)]="user.password" name="password" placeholder="password">
+                            <mat-icon matSuffix>password</mat-icon>
+                            <mat-hint>Hint</mat-hint>
+                        </mat-form-field>
 
-                        </p>
-                   </div>
-                   <button mat-raised-button color="primary" type="submit">submit</button>
-        </mat-card-content>
+                    </p>
+               </div>
+               <button mat-raised-button color="primary" type="submit">submit</button>
+    </mat-card-content>
 
-                            <mat-divider></mat-divider>
+                        <mat-divider></mat-divider>
 
-        <mat-card-footer>
-            
-            <p>
-                You have an account? <button mat-button color="primary" routerLink="../signin">Sign In</button>
-            </p>
-       </mat-card-footer>
-    </mat-card>
+    <mat-card-footer>
+        
+        <p>
+            You have an account? <button mat-button color="primary" routerLink="../signin">Sign In</button>
+        </p>
+   </mat-card-footer>
+</mat-card>
 </form>
+
 

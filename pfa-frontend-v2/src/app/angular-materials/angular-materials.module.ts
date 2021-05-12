@@ -13,11 +13,17 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core'
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 
 const materials = [
   MatTableModule,
+  MatAutocompleteModule,
+  MatCheckboxModule,
+  MatSidenavModule,
   MatDividerModule,
   MatDatepickerModule,
   MatRadioModule,

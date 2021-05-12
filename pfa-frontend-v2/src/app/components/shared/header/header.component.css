@@ -1,3 +1,14 @@
+.pushing-down-div{
+  margin: 64px;
+}
+mat-toolbar {
+  width: 100%;
+  position: fixed;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+
+}
 .spacer {
     flex: 1 1 auto;
   }
@@ -5,8 +16,10 @@
   section {
     display: table;
   }
-  
-
+ 
+  .small-screen-div {
+    display: none;
+  }
   
   .button-row {
     display: table-cell;
@@ -36,4 +49,18 @@
   
 .active-nav-item {
   color: #3699ff;
+}
+
+@media (max-width: 767px){
+  .big-screen-div {
+    display: none;
+  }
+  .small-screen-div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .pushing-down-div{
+    margin: 128px;
+  }
 }
