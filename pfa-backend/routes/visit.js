@@ -22,7 +22,6 @@ router.post('/', function(req, res, next) {
 
         Visit.create(req.body, function (err, Visit) {
             if (err) {
-                console.log(err);
                 return next(err);
             }
             res.json(Visit);

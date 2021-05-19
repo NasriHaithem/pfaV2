@@ -52,6 +52,8 @@ router.post('/authenticate', (req, res, next) => {
             firstname: user.firstname,
             lastname: user.lastname,
             username: user.username,
+            city: user.city,
+            state: user.state,
             email: user.email,
             phoneNumber: user.phoneNumber,
             address: user.address,

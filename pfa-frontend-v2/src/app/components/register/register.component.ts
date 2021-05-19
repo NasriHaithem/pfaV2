@@ -3,6 +3,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidateService } from '../../services/validate.service.service';
 import { AuthService } from '../../services/auth.service.service';
+import { GovernoratesService } from '../../services/governorates/governorates.service';
+import {FormControl} from '@angular/forms';
+
 import { Router } from '@angular/router';
 import {User} from '../../models/users.model'
 @Component({
@@ -11,6 +14,8 @@ import {User} from '../../models/users.model'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  governorateControl = new FormControl();
+  governorateOptions: any = [];
   user: User = {
     firstname:  '',
     lastname:  '',
@@ -21,16 +26,17 @@ export class RegisterComponent implements OnInit {
     username:  '',
     password:  '',
   };
-    
   
   constructor(
     private validateService: ValidateService,
     private authService: AuthService,
-    private router: Router    ) { }
-
+    private governoratesService: GovernoratesService,
+    private router: Router ) { }
+  
   ngOnInit() {
+    this.governoratesService.getGovernorates().subscribe( (data) => this.governorateOptions = data)
   }
-
+  
   onRegisterSubmit() {
     const user = this.user;
     console.log(user)

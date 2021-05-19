@@ -18,6 +18,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MarketComponent } from './components/market/market.component'
 
 import { FilterPipe }  from './components/market/filter.pipe';
+import { AuthGuard } from './guards/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,7 @@ import { FilterPipe }  from './components/market/filter.pipe';
     ReactiveFormsModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [ AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

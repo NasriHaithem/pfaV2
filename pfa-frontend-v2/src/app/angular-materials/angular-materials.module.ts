@@ -16,11 +16,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
 const materials = [
   MatTableModule,
+  MatSelectModule,
   MatAutocompleteModule,
   MatCheckboxModule,
   MatSidenavModule,

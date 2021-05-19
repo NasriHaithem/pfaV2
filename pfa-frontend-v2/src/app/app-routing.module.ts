@@ -5,12 +5,13 @@ import { LoginComponent } from './components/login/login.component';
 import { MarketComponent } from './components/market/market.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from './guards/auth.guard'
 
 const routes: Routes = [
   { path:'home', component:HomeComponent},
   { path:'signup', component: RegisterComponent},
   { path:'signin', component: LoginComponent},
-  { path:'profile', component: ProfileComponent},
+  { path:'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path:'market', component: MarketComponent},
   { path:'', redirectTo:'/home', pathMatch:'full'}
 ];

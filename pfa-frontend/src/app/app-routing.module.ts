@@ -19,7 +19,7 @@ const routes: Routes = [
     ]
   },
   { path:'market', component:MarketComponent},
-  { path:'market/:id', component:ItemDetailsComponent, canActivate: [AuthGuard],},//el login traj3ou lil item detail page
+  { path:'market/:id', component:ItemDetailsComponent, canActivate: [AuthGuard]},//el login traj3ou lil item detail page
 ];
 
 @NgModule({

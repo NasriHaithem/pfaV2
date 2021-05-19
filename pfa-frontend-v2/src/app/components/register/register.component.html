@@ -50,29 +50,6 @@
            </p>
                </div>
                
-              
-               <div class="row">
-                    <p class="column">
-
-                        <mat-form-field>
-                            <mat-label>Your City</mat-label>
-                            <input type="text" matInput id="city"  [(ngModel)]="user.city" name="city" placeholder="City ">
-                            <mat-icon matSuffix>location_city</mat-icon>
-                            <mat-hint>Hint</mat-hint>
-                        </mat-form-field>
-
-
-                        <mat-form-field>
-                            <mat-label>Your State</mat-label>
-                            <input type="text" matInput id="state"  [(ngModel)]="user.state" name="state" placeholder="State ">
-                            <mat-icon matSuffix>place</mat-icon>
-                            <mat-hint>Hint</mat-hint>
-                        </mat-form-field>
-
-                    </p>
-
-               </div>
-              
                
                <div class="row">
                     <p class="column">
@@ -95,6 +72,48 @@
 
                     </p>
                </div>
+
+               <div class="row">
+                <p class="column">
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Select a State</mat-label>
+                        <mat-select disableRipple [(ngModel)]="user.state" name="state">
+                            <mat-option  *ngFor="let option of governorateOptions" [value]="option._id">
+                              {{option._id}}
+                            </mat-option>
+                          
+                        </mat-select>
+                        <!--<mat-select [formControl]="governorateControl" >
+                            <mat-optgroup *ngFor="let option of governorateOptions" [label]="option._id" [disabled]="option.disabled" [(ngModel)]="user.state" name="state">
+                                <mat-option *ngFor="let city of option.cities" [value]="city" [(ngModel)]="user.city" name="city">
+                                   {{option._id}}, {{city}}
+                                </mat-option>
+                            </mat-optgroup>
+                        </mat-select>-->
+                        
+                    </mat-form-field>
+                      
+
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Select a City</mat-label>
+                        <mat-select disableRipple [(ngModel)]="user.city" name="city">
+                          
+                            <mat-optgroup *ngFor="let option of governorateOptions" [label]="option._id" [disabled]="option.disabled">
+                                <mat-option *ngFor="let city of option.cities"  [value]="city">
+                                    {{city}}
+                                </mat-option>
+                            </mat-optgroup>
+                            
+                          
+                        </mat-select>
+                    </mat-form-field>
+
+                </p>
+
+           </div>
+
                <button mat-raised-button color="primary" type="submit">submit</button>
     </mat-card-content>
 

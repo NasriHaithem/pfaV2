@@ -3,7 +3,7 @@ export interface Deals {
     buyerId:  string,
     announcementId:  string,
     beginDate: string,
-    endDate: string,
+    duration: string,
     dealPrice:  string,
     id:  string,
 }

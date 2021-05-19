@@ -53,6 +53,7 @@ router.post('/', cpUpload, function(req, res, next) {
         files['images'].forEach(file => {
             req.body.secondaryImagesUrl.push('http://localhost:3000/images/' + file.filename)
         });
+        
         Announcement.create(req.body, function (err, announcement) {
             if (err) {
                 console.log(err);

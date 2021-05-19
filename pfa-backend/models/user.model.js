@@ -20,13 +20,14 @@ const UserSchema = mongoose.Schema ({
     type: String,
     required: true
   },
+  governorate: {
+    type: String,
+  },
   city: {
     type: String,
-    required: true
   },
   state: {
-    type: String,
-    required: true
+    type: String
   },
   username: {
     type: String,

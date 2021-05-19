@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 
 // Deal Schema
 const DealSchema = mongoose.Schema ({
-    sellerId: {
+    /*sellerId: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Users',
         required: true
-    },
+    },*/
     buyerId: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Users',

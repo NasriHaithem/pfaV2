@@ -24,12 +24,13 @@ const AnnouncementSchema = mongoose.Schema ({
     type_lodgment:{
         type: String,
         //required: true
+        // home or appartment
     },
     availability: {
         type: Boolean,
         //required: true
     },
-    state: {
+    governorate: {
         type: String,
         //required: true
     },
@@ -80,16 +81,13 @@ const AnnouncementSchema = mongoose.Schema ({
 
     floor: {
         type: Number,
-        //studio apartment
+        // apartment
     },
     elevator: {
         type: Boolean,
-        //stdio apartment
+        // apartment
     },
     
-    /*TODO: nzidou attibuts hethom
-                    surface, description, momkin nzidou barcha tsawir
-    */
 });
 
 const Announcement = mongoose.model('Announcement', AnnouncementSchema);

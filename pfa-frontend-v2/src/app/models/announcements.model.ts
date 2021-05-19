@@ -1,17 +1,25 @@
 export interface Announcements {
-    _id:  string,
-    ownerId: string,
-    type:  string,
-    availability:  boolean,
-    address: string,
-    price: string,
-    imageUrl:  string,
-    uploaded:  string,
+    _id:  string
+    ownerId: string
+    title: string
+    sqm: number
+    description: string
 
+    type_ann:  string
+    type_lodgement: string
+    availability:  boolean
+    state: string
+    city: string
+    street: string
+    price: string
+    imageUrl:  string
+    secondaryImageUrl?: [string]
+    uploaded:  Date
 
-    equippedKitchen?: boolean,
-    rooms?: number,
-    garden?: boolean,
-    floor?: number,
+    baths?: number
+    equippedKitchen?: boolean
+    rooms?: number
+    garden?: boolean
+    floor?: number
     elevator?: boolean
 }

@@ -13,6 +13,8 @@ const usersRouter = require('./routes/users');
 const announcementRouter = require('./routes/announcement');
 const visitRouter = require('./routes/visit');
 const dealRouter = require('./routes/deal');
+const governorateRouter = require('./routes/governorate');
+const cityRouter = require('./routes/city');
 
 
 const mongoose = require('mongoose')
@@ -55,6 +57,8 @@ app.use('/users', usersRouter);
 app.use('/announcements',announcementRouter);
 app.use('/visits',visitRouter);
 app.use('/deals',dealRouter);
+app.use('/governorates',governorateRouter);
+app.use('/cities',cityRouter);
 
 
 // catch 404 and forward to error handler
