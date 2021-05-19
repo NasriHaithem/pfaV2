@@ -13,14 +13,24 @@ img {
 .example-card {
   max-width: 250px;
   margin: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .view-detail-btn {
   background: #3699ff;
   color: white;
 }
+/*.description {
+  overflow: hidden;
+  white-space: nowrap; 
+  text-overflow: ellipsis;
+  
+}*/
 mat-card-actions {
   display: flex;
   justify-content: space-between;
+  
 }
 .example-header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');

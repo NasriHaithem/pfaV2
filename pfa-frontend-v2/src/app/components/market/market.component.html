@@ -9,14 +9,16 @@
   </form>
   <mat-card class="example-card" *ngFor="let announcement of announcements | filter: searchText">
     
-    <img mat-card-image [src]="announcement.imageUrl" alt="announcement">
+    <div>
+      <img mat-card-image [src]="announcement.imageUrl" alt="announcement">
     <mat-card-content>
       <h3 style="font-weight:bolder; color: blue;">{{announcement.title}} </h3>
       <h5>{{announcement.state}} </h5>
-      <p>
-        {{announcement.description}}
+      <p class="description">
+        {{cropDescription(announcement.description)}}
       </p>
     </mat-card-content>
+    </div>
     <mat-card-actions>
       <button class="view-detail-btn" mat-raised-button>view details <mat-icon>visibility</mat-icon></button>
       <button class="favorite-btn" mat-button color="accent" >{{announcement.price}}dt</button>
