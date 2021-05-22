@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-
+const Deals = require('../models/deal.model').schema;
+ 
 
 // User Schema
 const UserSchema = mongoose.Schema ({
@@ -37,7 +38,10 @@ const UserSchema = mongoose.Schema ({
     type: String,
     required: true
   },
-
+  deals: {
+    type: [Deals],
+    default: []
+  },
   
 });
 

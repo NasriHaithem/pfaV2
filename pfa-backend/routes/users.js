@@ -4,6 +4,8 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user.model');
+const Announcement = require('../models/announcement.model');
+const Deal = require('../models/deal.model');
 
 // Register
 router.post('/register', (req, res, next) => {
@@ -82,7 +84,33 @@ router.get('/', function(req, res, next) {
       if (err) return next(err);
       res.json(User);
   });
-});  
+}); 
+// get my clients
+router.get('/clients/:id', function(req, res, next) {
+
+  User.findById(req.params.id, function (err, owner) {
+      
+      if (err) return next(err);
+      let buyers = []
+      
+      if(owner.deals){
+          owner.deals.forEach((deal, index) => {
+            User.findById(deal.buyerId, (err, buyer) => {
+             if (err) return next(err);
+             buyers.push(buyer)
+            
+             if(index == owner.deals.length -1) {
+               res.json(buyers)
+             }
+           })
+          
+          });
+          
+        }
+  })      
+});
+
+
 // post User
 router.post('/', function(req, res, next) {
   
@@ -96,7 +124,15 @@ router.post('/', function(req, res, next) {
       });
   
 });
-
+// put a deal into a user
+router.put('makeDeal/:id', function(req, res, next) {
+  User.findByIdAndUpdate(req.params.id, {$push: {deals: req.body}},function (err, User) {
+      if (err) return res.status(500).send({ message: 'update fail'});
+      res.json({
+          msg: "successfully updated"
+      });
+  });
+});
 //update User
 router.put('/:id', function(req, res, next) {
   User.findByIdAndUpdate(req.params.id, {$set: req.body},function (err, User) {

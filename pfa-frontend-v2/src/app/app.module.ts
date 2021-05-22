@@ -19,6 +19,9 @@ import { MarketComponent } from './components/market/market.component'
 
 import { FilterPipe }  from './components/market/filter.pipe';
 import { AuthGuard } from './guards/auth.guard';
+import { ItemsComponent } from './components/profile/items/items.component';
+import { MytableComponent } from './components/mytable/mytable.component';
+import { ClientsComponent } from './components/profile/clients/clients.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,10 @@ import { AuthGuard } from './guards/auth.guard';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    MarketComponent
+    MarketComponent,
+    ItemsComponent,
+    MytableComponent,
+    ClientsComponent
   ],
   imports: [
     BrowserModule,

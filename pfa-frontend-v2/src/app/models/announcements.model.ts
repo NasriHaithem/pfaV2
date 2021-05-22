@@ -8,7 +8,7 @@ export interface Announcements {
     type_ann:  string
     type_lodgement: string
     availability:  boolean
-    state: string
+    governorate: string
     city: string
     street: string
     price: string

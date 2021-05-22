@@ -40,6 +40,13 @@ router.get('/', function(req, res, next) {
         res.json(announcement);
     });
 });  
+// GET the announcements of an Owner
+router.get('/owner/:id', function(req, res, next) {
+    Announcement.find({ownerId: req.params.id}, function (err, announcement) {
+        if (err) return next(err);
+        res.json(announcement);
+    });
+}); 
 // post announcement
 var cpUpload = upload.fields([{ name: 'image', maxCount: 1 }, { name: 'images', maxCount: 8 }])
 router.post('/', cpUpload, function(req, res, next) {

@@ -1,19 +1,25 @@
 <div class="navigation">
     <ul>
         <li>
+            <a (click)="toggleMenu()" >
+                <span class="icon toggle"></span>
+                <span class="title">Toggle Side Menu</span>
+            </a>
+        </li>
+        <li>
             <a>
                 <span class="icon"><i class="fa fa-list"></i></span>
                 <span class="title">Dashboard</span>
             </a>
         </li>
         <li>
-            <a>
+            <a routerLink='clients'>
                 <span class="icon"><i class="fa fa-users"></i></span>
                 <span class="title">Clients</span>
             </a>
         </li>
         <li>
-            <a>
+            <a routerLink='items'>
                 <span class="icon"><i class="fa fa-window-restore"></i></span>
                 <span class="title">My Items</span>
             </a>
@@ -51,6 +57,6 @@
     </ul>
 </div>
 <div class="toggle" (click)="toggleMenu()"></div>
-<div class="container">
+<div class="content">
     <router-outlet></router-outlet>
 </div>

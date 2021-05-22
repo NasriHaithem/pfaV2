@@ -13,7 +13,7 @@
       <img mat-card-image [src]="announcement.imageUrl" alt="announcement">
     <mat-card-content>
       <h3 style="font-weight:bolder; color: blue;">{{announcement.title}} </h3>
-      <h5>{{announcement.state}} </h5>
+      <h5>{{announcement.governorate}}, {{announcement.city}} </h5>
       <p class="description">
         {{cropDescription(announcement.description)}}
       </p>

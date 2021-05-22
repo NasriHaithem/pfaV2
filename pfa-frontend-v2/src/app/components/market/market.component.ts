@@ -32,7 +32,7 @@ export class MarketComponent implements OnInit {
     if(description.length > 250)
     {
       // you can also use substr instead of substring
-      description = description.substring(0,250) + dots;
+      description = description.substring(0,250) + dots; 
     }
 
       return description;
