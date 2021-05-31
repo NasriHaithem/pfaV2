@@ -21,7 +21,7 @@ const AnnouncementSchema = mongoose.Schema ({
         //required: true
         //sales or rents
     },
-    type_lodgment:{
+    type_lodgement:{
         type: String,
         //required: true
         // home or appartment

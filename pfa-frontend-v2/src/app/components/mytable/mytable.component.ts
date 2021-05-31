@@ -12,15 +12,23 @@ import {MatTableDataSource} from '@angular/material/table';
 export class MytableComponent implements OnInit {
   tableDataSrc: any;
 
+  //@Input() addElementFunction: any;
   @Input('tableColumns') tableCols: string[];
   @Input() tableData: {}[] = []
-  
+  //@Input() buttonContent: string;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor() { }
 
+  displayDataOrBtns(col, data){
+    if(col === "Delete/Edit/View"){
+      document.getElementById("row-data").innerHTML = "<button>hi</button>"
+    }else{
+      return data
+    }
+  }
   ngOnInit(): void {
     this.tableDataSrc = new MatTableDataSource(this.tableData);
     this.tableDataSrc.paginator = this.paginator;
@@ -35,5 +43,6 @@ export class MytableComponent implements OnInit {
       this.tableDataSrc.paginator.firstPage();
     }
   }
+  
 }
 

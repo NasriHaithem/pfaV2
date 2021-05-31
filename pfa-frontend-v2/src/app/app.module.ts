@@ -22,6 +22,10 @@ import { AuthGuard } from './guards/auth.guard';
 import { ItemsComponent } from './components/profile/items/items.component';
 import { MytableComponent } from './components/mytable/mytable.component';
 import { ClientsComponent } from './components/profile/clients/clients.component';
+import { AddItemModalComponent } from './components/profile/items/add-item-modal/add-item-modal.component';
+import { AddAppartmentComponent } from './components/profile/items/add-appartment/add-appartment.component';
+import { DeleteConfirmationDialogComponent } from './components/delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { EditAnnouncementDialogComponent } from './components/edit-announcement-dialog/edit-announcement-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +38,16 @@ import { ClientsComponent } from './components/profile/clients/clients.component
     MarketComponent,
     ItemsComponent,
     MytableComponent,
-    ClientsComponent
+    ClientsComponent,
+    AddItemModalComponent,
+    AddAppartmentComponent,
+    DeleteConfirmationDialogComponent,
+    EditAnnouncementDialogComponent
+  ],
+  entryComponents:[
+    AddItemModalComponent,
+    AddAppartmentComponent,
+    DeleteConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,

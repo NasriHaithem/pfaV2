@@ -1,6 +1,13 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { Announcements } from 'src/app/models/announcements.model';
 import { AnnouncementsService} from '../../../services/announcements/announcements.service'
+import {MatDialog} from '@angular/material/dialog';
+import { AddItemModalComponent } from './add-item-modal/add-item-modal.component';
+import { AddAppartmentComponent } from './add-appartment/add-appartment.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { DeleteConfirmationDialogComponent } from '../../delete-confirmation-dialog/delete-confirmation-dialog.component';
 
  @Component({
   selector: 'app-items',
@@ -9,13 +16,70 @@ import { AnnouncementsService} from '../../../services/announcements/announcemen
 })
 export class ItemsComponent implements OnInit {
   ownerId: string
-  tableCols = ['title', 'sqm', 'type_lodgment', 'type_ann', 'price']
-  tableData: Announcements[];
-  constructor(private announcementsService: AnnouncementsService) {}
+  /*tableCols = ['Delete/Edit/View', 'sqm', 'type_lodgement', 'type_ann', 'governorate', 'city', 'price', 'title']
+  tableData: Announcements[];*/
+  displayedColumns: string[] = ['title', 'sqm', 'type_lodgement', 'type_ann', 'governorate', 'city', 'price', 'action']
+  
+  dataSource: MatTableDataSource<Announcements>
 
-  ngOnInit(): void {
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(private announcementsService: AnnouncementsService, public dialog: MatDialog) {
+    this.dataSource = new MatTableDataSource()
+  }
+  /*openActionDialog(action,obj) {
+    obj.action = action;
+    const dialogRef = this.dialog.open(DialogBoxComponent, {
+      width: '250px',
+      data:obj
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.event == 'Delete'){
+        this.deleteRowData(result.data);
+      }else if(result.event == 'Update'){
+        this.updateRowData(result.data);
+      }
+    });
+  }*/
+
+  delete(id: any) {
+    const dialogRef = this.dialog.open(DeleteConfirmationDialogComponent);
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.announcementsService.deleteAnnouncement(id).subscribe( resp => {
+          if(resp.success){
+            this.dataSource.data = this.dataSource.data.filter(item => item._id != id);
+          }
+        });
+      }
+    });
+  }
+  /*updateRowData(row){
+    this.announcementsService.updateAnnouncement(row, row.id);
+  }*/
+    ngOnInit(): void {
     this.ownerId = JSON.parse(localStorage.getItem('user')).id;
-    this.announcementsService.getMyAnnouncements(this.ownerId).subscribe( (data) =>  this.tableData = data ) 
+    this.announcementsService.getMyAnnouncements(this.ownerId).subscribe( (data) => this.dataSource.data = data as Announcements[]) 
+  }
+  
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  public applyFilter = (event: Event) => {
+    const target = event.target as HTMLInputElement;
+    this.dataSource.filter = target.value.trim().toLocaleLowerCase();
+  }
+
+  openDialog() {
+    this.dialog.open(AddItemModalComponent);
+  }
+  openDialogAppartment(){
+    this.dialog.open(AddAppartmentComponent);
   }
 
 }

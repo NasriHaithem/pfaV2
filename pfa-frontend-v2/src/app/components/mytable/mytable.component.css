@@ -1,7 +1,8 @@
 
 table {
     width: 100%;
-  }
+
+}
   
   .mat-form-field {
     font-size: 14px;
@@ -10,5 +11,15 @@ table {
   }
   
   td, th {
-    width: 25%;
+    width: 15%;
   }
+
+@media (max-width: 600px) {
+
+    .table-container { 
+        width: 100% !important;
+        overflow-x: scroll; 
+    }
+
+    th, td {min-width: 200px; }
+}

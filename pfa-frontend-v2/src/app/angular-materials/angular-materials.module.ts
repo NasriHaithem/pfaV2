@@ -17,11 +17,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
 const materials = [
   MatTableModule,
+  MatDialogModule,
   MatSelectModule,
   MatAutocompleteModule,
   MatCheckboxModule,

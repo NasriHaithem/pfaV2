@@ -1,5 +1,6 @@
 export interface Announcements {
-    _id:  string
+    _id?: any;
+
     ownerId: string
     title: string
     sqm: number
@@ -12,9 +13,9 @@ export interface Announcements {
     city: string
     street: string
     price: string
-    imageUrl:  string
-    secondaryImageUrl?: [string]
-    uploaded:  Date
+    imageUrl?:  File
+    secondaryImagesUrl?: File[]
+    uploaded?:  Date
 
     baths?: number
     equippedKitchen?: boolean

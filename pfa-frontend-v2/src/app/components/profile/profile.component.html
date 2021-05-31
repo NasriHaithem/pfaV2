@@ -1,11 +1,6 @@
+
 <div class="navigation">
     <ul>
-        <li>
-            <a (click)="toggleMenu()" >
-                <span class="icon toggle"></span>
-                <span class="title">Toggle Side Menu</span>
-            </a>
-        </li>
         <li>
             <a>
                 <span class="icon"><i class="fa fa-list"></i></span>
@@ -13,13 +8,13 @@
             </a>
         </li>
         <li>
-            <a routerLink='clients'>
+            <a routerLinkActive="active-sidebar-item" [routerLinkActiveOptions]="{exact: true}" routerLink='clients'>
                 <span class="icon"><i class="fa fa-users"></i></span>
                 <span class="title">Clients</span>
             </a>
         </li>
         <li>
-            <a routerLink='items'>
+            <a routerLinkActive="active-sidebar-item" [routerLinkActiveOptions]="{exact: true}" routerLink='items'>
                 <span class="icon"><i class="fa fa-window-restore"></i></span>
                 <span class="title">My Items</span>
             </a>

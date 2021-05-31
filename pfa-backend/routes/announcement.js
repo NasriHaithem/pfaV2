@@ -84,10 +84,11 @@ router.put('/:id', function(req, res, next) {
 //delete announcement
 router.delete('/:id', function(req, res, next) {
     Announcement.findByIdAndDelete(req.params.id, function (err, announcement) {
-        if (err) return res.status(500).send({ message: 'delete fail'});
+        if (err) return res.status(500).send({ message: 'delete fail', success: false});
         res.json({
             announcement : announcement,
-            msg: "successfully deleted"
+            message : "successfully deleted",
+            success : true,
         });
     });
 });
