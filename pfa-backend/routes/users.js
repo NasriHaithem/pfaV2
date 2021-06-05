@@ -78,7 +78,7 @@ router.get('/:id', function(req, res, next) {
       res.json(User);
   });
 });
-// get all Visits
+// get all Users
 router.get('/', function(req, res, next) {
   User.find({}, function (err, User) {
       if (err) return next(err);
@@ -109,7 +109,26 @@ router.get('/clients/:id', function(req, res, next) {
         }
   })      
 });
-
+// get my deals
+router.get('/myDeals/:id', function(req, res, next){
+  User.findById(req.params.id, (err, user) => {
+    if (err) return res.status(404).send({ message: 'user not found'});
+    let dealsInformations = [...user.deals];
+    //console.log(dealsInformations)
+    dealsInformations.forEach( (dealInfo, index) => {
+      
+      User.findById(dealInfo.buyerId, (err, buyer) => {
+        dealInfo["buyerFirstname"] = buyer.firstname;
+        dealInfo["buyerLastname"] = buyer.lastname;
+        dealInfo["buyerPhoneNumber"] = buyer.phoneNumber;
+        console.log(dealInfo)
+      })
+      if(index == dealsInformations.length - 1 ){
+        res.json(dealsInformations)
+      }
+    });
+  })
+})
 
 // post User
 router.post('/', function(req, res, next) {
@@ -125,12 +144,31 @@ router.post('/', function(req, res, next) {
   
 });
 // put a deal into a user
-router.put('makeDeal/:id', function(req, res, next) {
-  User.findByIdAndUpdate(req.params.id, {$push: {deals: req.body}},function (err, User) {
+router.put('/addDeal/:id', function(req, res, next) {
+  const BUYER = {
+          buyerId: req.body.buyerId,
+          announcementId: req.body.announcementId,
+          beginDate: req.body.beginDate,
+          duration: req.body.duration,
+          dealPrice: req.body.dealPrice
+        }
+  User.findByIdAndUpdate(
+    req.params.id, 
+    {
+      $push: {
+        "deals": BUYER
+      }
+    },
+    {upsert: true, new : true},
+    function (err, user) {
       if (err) return res.status(500).send({ message: 'update fail'});
+    
       res.json({
-          msg: "successfully updated"
+        buyer: BUYER,
+        msg: "successfully updated"
       });
+      
+      
   });
 });
 //update User

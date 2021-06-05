@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { DeleteConfirmationDialogComponent } from '../../delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { EditAnnouncementDialogComponent } from '../../edit-announcement-dialog/edit-announcement-dialog.component';
 
  @Component({
   selector: 'app-items',
@@ -16,10 +17,9 @@ import { DeleteConfirmationDialogComponent } from '../../delete-confirmation-dia
 })
 export class ItemsComponent implements OnInit {
   ownerId: string
-  /*tableCols = ['Delete/Edit/View', 'sqm', 'type_lodgement', 'type_ann', 'governorate', 'city', 'price', 'title']
-  tableData: Announcements[];*/
+
   displayedColumns: string[] = ['title', 'sqm', 'type_lodgement', 'type_ann', 'governorate', 'city', 'price', 'action']
-  
+ 
   dataSource: MatTableDataSource<Announcements>
 
   @ViewChild(MatSort) sort!: MatSort;
@@ -28,22 +28,6 @@ export class ItemsComponent implements OnInit {
   constructor(private announcementsService: AnnouncementsService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource()
   }
-  /*openActionDialog(action,obj) {
-    obj.action = action;
-    const dialogRef = this.dialog.open(DialogBoxComponent, {
-      width: '250px',
-      data:obj
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result.event == 'Delete'){
-        this.deleteRowData(result.data);
-      }else if(result.event == 'Update'){
-        this.updateRowData(result.data);
-      }
-    });
-  }*/
-
   delete(id: any) {
     const dialogRef = this.dialog.open(DeleteConfirmationDialogComponent);
   
@@ -57,9 +41,27 @@ export class ItemsComponent implements OnInit {
       }
     });
   }
-  /*updateRowData(row){
-    this.announcementsService.updateAnnouncement(row, row.id);
-  }*/
+  update(id: any) {
+    const dialogRef = this.dialog.open(EditAnnouncementDialogComponent);
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.announcementsService.updateAnnouncement(result.data ,id).subscribe( resp => {
+          
+            this.dataSource.data.forEach( (announcement) => {
+              if(announcement._id === id){
+                announcement.title = result.data.title
+                announcement.rooms = result.data.rooms
+                announcement.baths = result.data.baths
+              }
+            });
+
+            
+          
+        });
+      }
+    });
+  }
     ngOnInit(): void {
     this.ownerId = JSON.parse(localStorage.getItem('user')).id;
     this.announcementsService.getMyAnnouncements(this.ownerId).subscribe( (data) => this.dataSource.data = data as Announcements[]) 

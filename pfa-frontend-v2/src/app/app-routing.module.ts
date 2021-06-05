@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { MarketComponent } from './components/market/market.component';
 import { ClientsComponent } from './components/profile/clients/clients.component';
+import { DealsComponent } from './components/profile/deals/deals.component';
 import { ItemsComponent } from './components/profile/items/items.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
       children:[
         { path:'items', component: ItemsComponent},
         { path:'clients', component: ClientsComponent},
+        { path:'deals', component: DealsComponent},
 
       ]
   },

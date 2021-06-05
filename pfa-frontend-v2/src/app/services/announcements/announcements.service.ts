@@ -72,12 +72,12 @@ export class AnnouncementsService {
         .pipe(map( (res:Announcements) => res));
     }
 
-   /*updateAnnouncement(updates : any, id : string){
+   updateAnnouncement(updates : any, id : string){
       let headers = new HttpHeaders();
       headers.append('Content-Type', 'application/json');
       return this.http.put<Announcements>(`http://localhost:3000/announcements/${id}`,  updates,{headers: headers})
       .pipe(map( (res) => res));
-    }*/
+    }
     deleteAnnouncement(id : string):Observable<any>{
       
       return this.http.request<any>("DELETE",`http://localhost:3000/announcements/${id}`)

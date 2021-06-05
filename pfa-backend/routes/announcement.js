@@ -74,9 +74,10 @@ router.post('/', cpUpload, function(req, res, next) {
 //update announcement
 router.put('/:id', function(req, res, next) {
     Announcement.findByIdAndUpdate(req.params.id, {$set: req.body},function (err, announcement) {
-        if (err) return res.status(500).send({ message: 'update fail'});
+        if (err) return res.status(500).send({success: true, message: 'update fail'});
         res.json({
-            msg: "successfully updated"
+            success: true,
+            message: "successfully updated"
         });
     });
 });

@@ -26,6 +26,7 @@ import { AddItemModalComponent } from './components/profile/items/add-item-modal
 import { AddAppartmentComponent } from './components/profile/items/add-appartment/add-appartment.component';
 import { DeleteConfirmationDialogComponent } from './components/delete-confirmation-dialog/delete-confirmation-dialog.component';
 import { EditAnnouncementDialogComponent } from './components/edit-announcement-dialog/edit-announcement-dialog.component';
+import { DealsComponent } from './components/profile/deals/deals.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { EditAnnouncementDialogComponent } from './components/edit-announcement-
     AddItemModalComponent,
     AddAppartmentComponent,
     DeleteConfirmationDialogComponent,
-    EditAnnouncementDialogComponent
+    EditAnnouncementDialogComponent,
+    DealsComponent
   ],
   entryComponents:[
     AddItemModalComponent,
