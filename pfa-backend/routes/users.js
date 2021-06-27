@@ -111,21 +111,33 @@ router.get('/clients/:id', function(req, res, next) {
 });
 // get my deals
 router.get('/myDeals/:id', function(req, res, next){
+  
+  
+  
   User.findById(req.params.id, (err, user) => {
     if (err) return res.status(404).send({ message: 'user not found'});
-    let dealsInformations = [...user.deals];
+    let dealsInformations = [];
     //console.log(dealsInformations)
-    dealsInformations.forEach( (dealInfo, index) => {
+    user.deals.forEach( (deal, index) => {
       
-      User.findById(dealInfo.buyerId, (err, buyer) => {
-        dealInfo["buyerFirstname"] = buyer.firstname;
-        dealInfo["buyerLastname"] = buyer.lastname;
-        dealInfo["buyerPhoneNumber"] = buyer.phoneNumber;
-        console.log(dealInfo)
+      User.findById(deal.buyerId, (err, buyer) => {
+        dealsInformations.push(
+          {
+            beginDate: deal.beginDate.toString().substring(0, 11),
+            duration: deal.duration,
+            dealPrice: deal.dealPrice, 
+            buyerFirstname: buyer.firstname, 
+            buyerLastname: buyer.lastname, 
+            buyerPhoneNumber: buyer.phoneNumber
+          }
+        )
+
+
+        if(index == user.deals.length - 1 ){
+          res.json(dealsInformations)
+        }
       })
-      if(index == dealsInformations.length - 1 ){
-        res.json(dealsInformations)
-      }
+        
     });
   })
 })

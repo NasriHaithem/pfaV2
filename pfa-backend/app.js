@@ -19,7 +19,7 @@ const cityRouter = require('./routes/city');
 
 const mongoose = require('mongoose')
 //connecting to mongo database:
-mongoose.connect(config.database, { useMongoClient: true});
+mongoose.connect(config.database);
 /*// On Connection
 mongoose.connection.on('connected', () => {
   console.log('Connected to Database '+'mongodb://localhost:27017/pfaDB');

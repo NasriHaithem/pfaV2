@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularMaterialModule } from './angular-materials/angular-materials.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 //components
 import { AppComponent } from './app.component';
@@ -27,6 +28,10 @@ import { AddAppartmentComponent } from './components/profile/items/add-appartmen
 import { DeleteConfirmationDialogComponent } from './components/delete-confirmation-dialog/delete-confirmation-dialog.component';
 import { EditAnnouncementDialogComponent } from './components/edit-announcement-dialog/edit-announcement-dialog.component';
 import { DealsComponent } from './components/profile/deals/deals.component';
+import { CreateContractDialog, VisitsComponent } from './components/profile/visits/visits.component';
+import { AnnouncementDetailsComponent, VisitDateDialog } from './components/announcement-details/announcement-details.component';
+import { DashboardComponent } from './components/profile/dashboard/dashboard.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,12 +49,20 @@ import { DealsComponent } from './components/profile/deals/deals.component';
     AddAppartmentComponent,
     DeleteConfirmationDialogComponent,
     EditAnnouncementDialogComponent,
-    DealsComponent
+    DealsComponent,
+    VisitsComponent,
+    AnnouncementDetailsComponent,
+    VisitDateDialog,
+    CreateContractDialog,
+    DashboardComponent,
+    
   ],
   entryComponents:[
     AddItemModalComponent,
     AddAppartmentComponent,
-    DeleteConfirmationDialogComponent
+    DeleteConfirmationDialogComponent,
+    VisitDateDialog,
+    CreateContractDialog,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +72,8 @@ import { DealsComponent } from './components/profile/deals/deals.component';
     AngularMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatCarouselModule.forRoot()
   ],
   providers: [ AuthGuard],
   bootstrap: [AppComponent]

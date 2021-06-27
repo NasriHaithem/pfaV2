@@ -1,6 +1,8 @@
 const express = require('express');
+const Announcement = require('../models/announcement.model');
 const router = express.Router();
 const Deal = require('../models/deal.model');
+const User = require('../models/user.model');
 
 // get Deal by id
 router.get('/:id', function(req, res, next) {
@@ -23,6 +25,40 @@ router.get('/', function(req, res, next) {
         res.json(Deal);
     });
 });  
+
+// get my Deals
+router.get('/myDeals/:id', async function(req, res, next) {
+    const populateQuery = [
+        {
+            path:'buyerId', 
+            model: User
+        }, 
+        {
+            path:'announcementId',
+            model: Announcement,
+            select:'title type_ann ownerId',
+            match: {ownerId: req.params.id}
+        }
+    ];
+    const QUERYRESULT = await Deal.find().populate(populateQuery)
+    console.log(QUERYRESULT)
+    let dealsList = []
+    QUERYRESULT.forEach( deal => {
+        dealsList.push({
+            firstname: deal.buyerId.firstname,
+            lastname: deal.buyerId.lastname,
+            phoneNumber: deal.buyerId.phoneNumber,
+            announcementTitle: deal.announcementId.title,
+            beginDate: deal.beginDate.toString().substring(0, 15),
+            duration: deal.duration,
+            dealPrice: deal.dealPrice
+        })
+    });
+    
+    return res.json(dealsList)
+
+});  
+
 // post Deal
 router.post('/', function(req, res, next) {
     

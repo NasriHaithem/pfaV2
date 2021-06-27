@@ -27,14 +27,13 @@ export class AnnouncementsService {
   }
 
 
-   getMyAnnouncements(id: string):Observable<Announcements[]> {
+  getMyAnnouncements(id: string):Observable<Announcements[]> {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return  this.http.get<Announcements[]>(`http://localhost:3000/announcements/owner/${id}`,  {headers: headers})
       .pipe(map( (res:Announcements[]) => res));
   }
-
-    postAnnouncements(announcement: Announcements):Observable<Announcements>{
+  postAnnouncements(announcement: Announcements):Observable<Announcements>{
       let headers = new HttpHeaders();
       headers.append('Content-Type', 'multipart/form-data');
       headers.append('Accept', 'application/json');
@@ -70,17 +69,16 @@ export class AnnouncementsService {
         
       return this.http.post<Announcements>("http://localhost:3000/announcements", formData)
         .pipe(map( (res:Announcements) => res));
-    }
-
-   updateAnnouncement(updates : any, id : string){
+  }
+  updateAnnouncement(updates : any, id : string){
       let headers = new HttpHeaders();
       headers.append('Content-Type', 'application/json');
       return this.http.put<Announcements>(`http://localhost:3000/announcements/${id}`,  updates,{headers: headers})
       .pipe(map( (res) => res));
-    }
-    deleteAnnouncement(id : string):Observable<any>{
+  }
+  deleteAnnouncement(id : string):Observable<any>{
       
       return this.http.request<any>("DELETE",`http://localhost:3000/announcements/${id}`)
       .pipe(map( (res) => res));
-    }
+  }
 }

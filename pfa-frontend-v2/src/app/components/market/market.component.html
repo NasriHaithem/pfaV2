@@ -20,7 +20,7 @@
     </mat-card-content>
     </div>
     <mat-card-actions>
-      <button class="view-detail-btn" mat-raised-button>view details <mat-icon>visibility</mat-icon></button>
+      <button class="view-detail-btn" mat-raised-button (click)="viewItem(announcement)">view details <mat-icon>visibility</mat-icon></button>
       <button class="favorite-btn" mat-button color="accent" >{{announcement.price}}dt</button>
     </mat-card-actions>
   </mat-card>

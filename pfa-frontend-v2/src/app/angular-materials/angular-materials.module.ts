@@ -20,7 +20,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 
 
-
 const materials = [
   MatTableModule,
   MatDialogModule,
@@ -40,7 +39,7 @@ const materials = [
   MatGridListModule,
   MatButtonModule,
   MatToolbarModule,
-  MatIconModule
+  MatIconModule,
 ] 
 
 @NgModule({

@@ -22,7 +22,7 @@ export class UsersService {
   getMyDeals(id: string):Observable<any[]>{
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.get<any[]>(`http://localhost:3000/users/myDeals/${id}`,  {headers: headers})
+    return this.http.get<any[]>(`http://localhost:3000/deals/myDeals/${id}`,  {headers: headers})
       .pipe(map( (res:any[]) => res));
   }
 }

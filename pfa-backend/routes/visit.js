@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Visit = require('../models/visit.model');
+const Announcement = require('../models/announcement.model');
+const User = require('../models/user.model');
+
 
 // get Visit by id
 router.get('/:id', function(req, res, next) {
@@ -9,6 +12,48 @@ router.get('/:id', function(req, res, next) {
         res.json(Visit);
     });
 });
+// get my Visits 
+router.get('/myVisits/:id',async (req, res, next) => {
+
+    const populateQuery = [ 
+        {
+            path:'visitor', 
+            model: User
+        },
+        {
+            path:'announcement',
+            model: Announcement,
+            select:'title type_ann ownerId',
+            match: {ownerId : req.params.id}
+        }
+    ];
+    const visitorsList = await Visit.find().populate(populateQuery)
+    
+    return res.json(visitorsList)
+    
+});
+
+router.get('/myVisitsThisMonth/:id', async (req, res, next) => {
+    const currentDate = new Date();
+
+    const populateQuery = [ 
+        {
+            path:'visitor', 
+            model: User
+        },
+        {
+            path:'announcement',
+            model: Announcement,
+            select:'title type_ann ownerId',
+            match: {ownerId : req.params.id}
+        }
+    ];
+    const visitorsList = await Visit.find({visitDate: {$gt: currentDate}})
+                                    .sort({visitDate: 'asc'})
+                                    .limit(5)
+                                    .populate(populateQuery);
+    return res.json(visitorsList)
+})
 // get all Visits
 router.get('/', function(req, res, next) {
     Visit.find({}, function (err, Visit) {
