@@ -17,14 +17,14 @@ const routes: Routes = [
   { path:'home', component:HomeComponent},
   { path:'signup', component: RegisterComponent},
   { path:'signin', component: LoginComponent},
-  { path:'profile', component: ProfileComponent, //canActivate: [AuthGuard],
+  { path:'profile', component: ProfileComponent, canActivate: [AuthGuard],
       children:[
         { path:'dashboard', component: DashboardComponent},
         { path:'items', component: ItemsComponent},
         { path:'clients', component: ClientsComponent},
         { path:'deals', component: DealsComponent},
         { path:'visits', component: VisitsComponent},
-
+        { path:'', redirectTo:'items', pathMatch:'full'}
 
       ]
   },

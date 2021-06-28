@@ -164,6 +164,7 @@ router.put('/addDeal/:id', function(req, res, next) {
           duration: req.body.duration,
           dealPrice: req.body.dealPrice
         }
+
   User.findByIdAndUpdate(
     req.params.id, 
     {
